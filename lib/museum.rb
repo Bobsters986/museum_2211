@@ -1,7 +1,8 @@
 class Museum
   attr_reader :name,
               :exhibits,
-              :patrons
+              :patrons,
+              :patrons_by_exhibit_interest
 
   def initialize(name)
     @name = name
@@ -25,5 +26,12 @@ class Museum
     @patrons << new_patron
   end
 
-  
+  def patrons_by_exhibit_interest
+    {
+      gems_and_minerals => @patrons if patron.interests.include? gems_and_minerals.name,
+      dead_sea_scrolls => @patrons if patron.interests.include? dead_sea_scrolls.name,
+      imax => @patrons if patron.interests.include? dead_sea_scrolls.name
+    }
+  end
+
 end
